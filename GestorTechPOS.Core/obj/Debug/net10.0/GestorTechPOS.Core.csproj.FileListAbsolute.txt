@@ -1,0 +1,11 @@
+C:\Users\janto\Downloads\GastroTechPOS_Avalonia_Mongo_Colores_Claros\GestorTechPOS.Core\bin\Debug\net10.0\GestorTechPOS.Core.deps.json
+C:\Users\janto\Downloads\GastroTechPOS_Avalonia_Mongo_Colores_Claros\GestorTechPOS.Core\bin\Debug\net10.0\GestorTechPOS.Core.dll
+C:\Users\janto\Downloads\GastroTechPOS_Avalonia_Mongo_Colores_Claros\GestorTechPOS.Core\bin\Debug\net10.0\GestorTechPOS.Core.pdb
+C:\Users\janto\Downloads\GastroTechPOS_Avalonia_Mongo_Colores_Claros\GestorTechPOS.Core\obj\Debug\net10.0\GestorTechPOS.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\janto\Downloads\GastroTechPOS_Avalonia_Mongo_Colores_Claros\GestorTechPOS.Core\obj\Debug\net10.0\GestorTechPOS.Core.AssemblyInfoInputs.cache
+C:\Users\janto\Downloads\GastroTechPOS_Avalonia_Mongo_Colores_Claros\GestorTechPOS.Core\obj\Debug\net10.0\GestorTechPOS.Core.AssemblyInfo.cs
+C:\Users\janto\Downloads\GastroTechPOS_Avalonia_Mongo_Colores_Claros\GestorTechPOS.Core\obj\Debug\net10.0\GestorTechPOS.Core.csproj.CoreCompileInputs.cache
+C:\Users\janto\Downloads\GastroTechPOS_Avalonia_Mongo_Colores_Claros\GestorTechPOS.Core\obj\Debug\net10.0\GestorTechPOS.Core.dll
+C:\Users\janto\Downloads\GastroTechPOS_Avalonia_Mongo_Colores_Claros\GestorTechPOS.Core\obj\Debug\net10.0\refint\GestorTechPOS.Core.dll
+C:\Users\janto\Downloads\GastroTechPOS_Avalonia_Mongo_Colores_Claros\GestorTechPOS.Core\obj\Debug\net10.0\GestorTechPOS.Core.pdb
+C:\Users\janto\Downloads\GastroTechPOS_Avalonia_Mongo_Colores_Claros\GestorTechPOS.Core\obj\Debug\net10.0\ref\GestorTechPOS.Core.dll

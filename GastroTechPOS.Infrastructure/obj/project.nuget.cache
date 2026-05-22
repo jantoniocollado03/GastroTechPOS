@@ -1,0 +1,36 @@
+{
+  "version": 2,
+  "dgSpecHash": "Yw0w3P/drwo=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\janto\\Downloads\\GastroTechPOS_Avalonia_Mongo_Colores_Claros\\GastroTechPOS.Infrastructure\\GastroTechPOS.Infrastructure.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\janto\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
+    "C:\\Users\\janto\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\2.0.0\\microsoft.extensions.logging.abstractions.2.0.0.nupkg.sha512",
+    "C:\\Users\\janto\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
+    "C:\\Users\\janto\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
+    "C:\\Users\\janto\\.nuget\\packages\\mongodb.bson\\3.8.1\\mongodb.bson.3.8.1.nupkg.sha512",
+    "C:\\Users\\janto\\.nuget\\packages\\mongodb.driver\\3.8.1\\mongodb.driver.3.8.1.nupkg.sha512",
+    "C:\\Users\\janto\\.nuget\\packages\\sharpcompress\\0.30.1\\sharpcompress.0.30.1.nupkg.sha512",
+    "C:\\Users\\janto\\.nuget\\packages\\snappier\\1.3.1\\snappier.1.3.1.nupkg.sha512",
+    "C:\\Users\\janto\\.nuget\\packages\\system.buffers\\4.6.1\\system.buffers.4.6.1.nupkg.sha512",
+    "C:\\Users\\janto\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
+    "C:\\Users\\janto\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\5.0.0\\system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512",
+    "C:\\Users\\janto\\.nuget\\packages\\system.security.accesscontrol\\5.0.0\\system.security.accesscontrol.5.0.0.nupkg.sha512",
+    "C:\\Users\\janto\\.nuget\\packages\\system.security.principal.windows\\5.0.0\\system.security.principal.windows.5.0.0.nupkg.sha512",
+    "C:\\Users\\janto\\.nuget\\packages\\zstdsharp.port\\0.7.3\\zstdsharp.port.0.7.3.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "message": "Package 'SharpCompress' 0.30.1 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-6c8g-7p36-r338",
+      "projectPath": "C:\\Users\\janto\\Downloads\\GastroTechPOS_Avalonia_Mongo_Colores_Claros\\GastroTechPOS.Infrastructure\\GastroTechPOS.Infrastructure.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\janto\\Downloads\\GastroTechPOS_Avalonia_Mongo_Colores_Claros\\GastroTechPOS.Infrastructure\\GastroTechPOS.Infrastructure.csproj",
+      "libraryId": "SharpCompress",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    }
+  ]
+}

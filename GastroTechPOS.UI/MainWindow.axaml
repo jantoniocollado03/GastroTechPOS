@@ -1,0 +1,351 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:conv="using:GastroTechPOS.UI.Converters"
+        x:Class="GastroTechPOS.UI.MainWindow"
+        Width="1280"
+        Height="860"
+        MinWidth="1100"
+        MinHeight="720"
+        Background="#F4F7FB"
+        Title="GastroTech POS - TPV Restauración">
+
+    <Window.Resources>
+        <conv:ProductoTipoConverter x:Key="TipoConverter" />
+        <conv:ProductoTiempoConverter x:Key="TiempoConverter" />
+        <conv:LineaComandaSubtotalConverter x:Key="SubtotalConverter" />
+        <conv:ProductoImpuestoConverter x:Key="ImpuestoConverter" />
+    </Window.Resources>
+
+    <Window.Styles>
+        <Style Selector="TextBlock">
+            <Setter Property="Foreground" Value="#122033" />
+        </Style>
+        <Style Selector="Button">
+            <Setter Property="Background" Value="#2563EB" />
+            <Setter Property="Foreground" Value="#FFFFFF" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Padding" Value="10,7" />
+            <Setter Property="CornerRadius" Value="8" />
+        </Style>
+        <Style Selector="TextBox">
+            <Setter Property="Background" Value="#FFFFFF" />
+            <Setter Property="Foreground" Value="#111827" />
+            <Setter Property="BorderBrush" Value="#A7B4C8" />
+            <Setter Property="CaretBrush" Value="#2563EB" />
+        </Style>
+        <Style Selector="ComboBox">
+            <Setter Property="Background" Value="#FFFFFF" />
+            <Setter Property="Foreground" Value="#111827" />
+            <Setter Property="BorderBrush" Value="#A7B4C8" />
+        </Style>
+        <Style Selector="CheckBox">
+            <Setter Property="Foreground" Value="#111827" />
+        </Style>
+        <Style Selector="TabControl">
+            <Setter Property="Background" Value="#F4F7FB" />
+        </Style>
+        <Style Selector="TabItem">
+            <Setter Property="Foreground" Value="#122033" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+        </Style>
+        <Style Selector="DataGrid">
+            <Setter Property="Background" Value="#FFFFFF" />
+            <Setter Property="Foreground" Value="#111827" />
+            <Setter Property="BorderBrush" Value="#C5CEDB" />
+        </Style>
+        <Style Selector="ListBox">
+            <Setter Property="Background" Value="#FFFFFF" />
+            <Setter Property="Foreground" Value="#111827" />
+            <Setter Property="BorderBrush" Value="#C5CEDB" />
+        </Style>
+    </Window.Styles>
+
+    <Grid RowDefinitions="Auto,*,Auto" Margin="16">
+        <Border Grid.Row="0" Background="#FFFFFF" BorderBrush="#D7DEE9" BorderThickness="1" CornerRadius="16" Padding="18" Margin="0,0,0,14">
+            <Grid ColumnDefinitions="*,Auto">
+                <StackPanel>
+                    <TextBlock Text="GastroTech POS"
+                               FontSize="31"
+                               FontWeight="Bold"
+                               Foreground="#1D4ED8" />
+                    <TextBlock Text="Sistema TPV con mesas, comandas, menú, cobro y cierre de caja conectado a MongoDB"
+                               FontSize="14"
+                               Foreground="#475569" />
+                </StackPanel>
+
+                <Button Grid.Column="1"
+                        Content="Refrescar MongoDB"
+                        Command="{Binding RefrescarDatosCommand}"
+                        Background="#0891B2" />
+            </Grid>
+        </Border>
+
+        <TabControl Grid.Row="1">
+            <TabItem Header="Salón / Mesas">
+                <Grid ColumnDefinitions="300,*" Margin="8">
+                    <Border Grid.Column="0"
+                            Background="#FFFFFF"
+                            BorderBrush="#D7DEE9"
+                            BorderThickness="1"
+                            Padding="14"
+                            CornerRadius="16"
+                            Margin="0,0,14,0">
+                        <Grid RowDefinitions="Auto,Auto,*">
+                            <TextBlock Text="Gestión de mesas"
+                                       FontSize="22"
+                                       FontWeight="Bold"
+                                       Foreground="#1D4ED8"
+                                       Margin="0,0,0,12" />
+
+                            <StackPanel Grid.Row="1" Spacing="8" Margin="0,0,0,12">
+                                <TextBlock Text="Nueva mesa" FontWeight="SemiBold" Foreground="#334155" />
+                                <TextBox Watermark="Número de mesa"
+                                         Text="{Binding NumeroNuevaMesa, Mode=TwoWay}" />
+                                <Button Content="Añadir mesa"
+                                        Command="{Binding CrearMesaCommand}"
+                                        Background="#2563EB" />
+
+                                <StackPanel Orientation="Horizontal" Spacing="8">
+                                    <Button Content="Reservar"
+                                            Command="{Binding ReservarMesaCommand}"
+                                            Background="#7C3AED" />
+                                    <Button Content="Liberar"
+                                            Command="{Binding CerrarMesaCommand}"
+                                            Background="#64748B" />
+                                </StackPanel>
+                            </StackPanel>
+
+                            <ListBox Grid.Row="2"
+                                     ItemsSource="{Binding Mesas}"
+                                     SelectedItem="{Binding MesaSeleccionada, Mode=TwoWay}">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Padding="10" Margin="0,0,0,6" Background="#EEF4FF" BorderBrush="#BDD0F7" BorderThickness="1" CornerRadius="10">
+                                            <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto">
+                                                <TextBlock Text="{Binding Numero, StringFormat='Mesa {0}'}"
+                                                           FontSize="16"
+                                                           FontWeight="SemiBold"
+                                                           Foreground="#172554" />
+                                                <TextBlock Grid.Column="1"
+                                                           Text="{Binding Estado}"
+                                                           Foreground="#B45309"
+                                                           FontWeight="SemiBold" />
+                                                <TextBlock Grid.Row="1" Grid.ColumnSpan="2"
+                                                           Text="{Binding Comanda.Id, StringFormat='Comanda: {0}', FallbackValue='Sin comanda'}"
+                                                           Foreground="#64748B"
+                                                           FontSize="12" />
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </Grid>
+                    </Border>
+
+                    <Grid Grid.Column="1" RowDefinitions="Auto,Auto,Auto,*" Background="#FFFFFF" Margin="0">
+                        <Border Grid.RowSpan="4" Background="#FFFFFF" BorderBrush="#D7DEE9" BorderThickness="1" CornerRadius="16" />
+
+                        <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="12" Margin="16,16,16,10">
+                            <TextBlock Text="{Binding TituloMesaSeleccionada}"
+                                       FontSize="24"
+                                       FontWeight="Bold"
+                                       Foreground="#1D4ED8" />
+                            <TextBlock Text="{Binding TotalComandaTexto}"
+                                       FontSize="18"
+                                       FontWeight="Bold"
+                                       Foreground="#15803D"
+                                       VerticalAlignment="Center" />
+                            <TextBlock Text="{Binding TiempoPreparacionTexto}"
+                                       FontSize="16"
+                                       FontWeight="SemiBold"
+                                       Foreground="#A16207"
+                                       VerticalAlignment="Center" />
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="10" Margin="16,0,16,12">
+                            <Button Content="Abrir comanda"
+                                    Command="{Binding AbrirComandaCommand}"
+                                    Background="#16A34A" />
+                            <Button Content="Cobrar comanda"
+                                    Command="{Binding CobrarComandaCommand}"
+                                    Background="#EA580C" />
+                        </StackPanel>
+
+                        <Border Grid.Row="2" Margin="16,0,16,12" Padding="12" CornerRadius="12" Background="#F8FAFC" BorderBrush="#CBD5E1" BorderThickness="1">
+                            <Grid ColumnDefinitions="*,110,Auto" ColumnSpacing="10">
+                                <ComboBox Grid.Column="0"
+                                          ItemsSource="{Binding ProductosFiltrados}"
+                                          SelectedItem="{Binding ProductoSeleccionadoParaComanda, Mode=TwoWay}">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding}" Foreground="#111827" />
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                                <TextBox Grid.Column="1"
+                                         Watermark="Cantidad"
+                                         Text="{Binding CantidadProducto, Mode=TwoWay}" />
+                                <Button Grid.Column="2"
+                                        Content="Añadir a comanda"
+                                        Command="{Binding AgregarProductoAComandaCommand}"
+                                        Background="#2563EB" />
+                            </Grid>
+                        </Border>
+
+                        <DataGrid Grid.Row="3"
+                                  Margin="16,0,16,16"
+                                  ItemsSource="{Binding MesaSeleccionada.Comanda.Lineas}"
+                                  AutoGenerateColumns="False"
+                                  IsReadOnly="True"
+                                  GridLinesVisibility="All"
+                                  BorderBrush="#CBD5E1"
+                                  BorderThickness="1">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Cant."
+                                                    Binding="{Binding Cantidad}"
+                                                    Width="70" />
+                                <DataGridTextColumn Header="Producto"
+                                                    Binding="{Binding Producto.Nombre}"
+                                                    Width="*" />
+                                <DataGridTextColumn Header="Tipo"
+                                                    Binding="{Binding Producto, Converter={StaticResource TipoConverter}}"
+                                                    Width="140" />
+                                <DataGridTextColumn Header="Precio"
+                                                    Binding="{Binding Producto.Precio}"
+                                                    Width="110" />
+                                <DataGridTextColumn Header="Impuesto"
+                                                    Binding="{Binding Producto, Converter={StaticResource ImpuestoConverter}}"
+                                                    Width="110" />
+                                <DataGridTextColumn Header="Tiempo"
+                                                    Binding="{Binding Producto, Converter={StaticResource TiempoConverter}}"
+                                                    Width="100" />
+                                <DataGridTextColumn Header="Subtotal"
+                                                    Binding="{Binding Converter={StaticResource SubtotalConverter}}"
+                                                    Width="130" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Menú / Productos">
+                <Grid ColumnDefinitions="360,*" Margin="8">
+                    <Border Grid.Column="0" Padding="16" Background="#FFFFFF" BorderBrush="#D7DEE9" BorderThickness="1" CornerRadius="16" Margin="0,0,14,0">
+                        <StackPanel Spacing="10">
+                            <TextBlock Text="Añadir producto"
+                                       FontSize="22"
+                                       FontWeight="Bold"
+                                       Foreground="#1D4ED8" />
+
+                            <TextBlock Text="Nombre" Foreground="#334155" />
+                            <TextBox Watermark="Ej: Hamburguesa"
+                                     Text="{Binding NombreProducto, Mode=TwoWay}" />
+
+                            <TextBlock Text="Precio" Foreground="#334155" />
+                            <TextBox Watermark="Ej: 12,50"
+                                     Text="{Binding PrecioProducto, Mode=TwoWay}" />
+
+                            <TextBlock Text="Tipo" Foreground="#334155" />
+                            <ComboBox ItemsSource="{Binding TiposProducto}"
+                                      SelectedItem="{Binding TipoProductoSeleccionado, Mode=TwoWay}" />
+
+                            <Border Background="#F8FAFC" BorderBrush="#CBD5E1" BorderThickness="1" CornerRadius="10" Padding="10">
+                                <StackPanel Spacing="8">
+                                    <TextBlock Text="Opciones del producto" FontWeight="SemiBold" Foreground="#A16207" />
+                                    <CheckBox Content="Bebida con alcohol"
+                                              IsChecked="{Binding ProductoTieneAlcohol, Mode=TwoWay}" />
+                                    <CheckBox Content="Plato/Postre caliente"
+                                              IsChecked="{Binding ProductoEsCaliente, Mode=TwoWay}" />
+                                    <CheckBox Content="Postre con lactosa"
+                                              IsChecked="{Binding ProductoTieneLactosa, Mode=TwoWay}" />
+                                </StackPanel>
+                            </Border>
+
+                            <Button Content="Guardar producto en MongoDB"
+                                    Command="{Binding AgregarProductoCatalogoCommand}"
+                                    Background="#16A34A" />
+                        </StackPanel>
+                    </Border>
+
+                    <Grid Grid.Column="1" RowDefinitions="Auto,*" Background="#FFFFFF">
+                        <Border Grid.RowSpan="2" Background="#FFFFFF" BorderBrush="#D7DEE9" BorderThickness="1" CornerRadius="16" />
+
+                        <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="12" Margin="16,16,16,12">
+                            <TextBlock Text="Catálogo de productos"
+                                       FontSize="24"
+                                       FontWeight="Bold"
+                                       Foreground="#1D4ED8" />
+                            <TextBlock Text="Filtro:" VerticalAlignment="Center" Foreground="#334155" />
+                            <ComboBox ItemsSource="{Binding FiltrosCategoria}"
+                                      SelectedItem="{Binding FiltroCategoria, Mode=TwoWay}"
+                                      Width="170" />
+                        </StackPanel>
+
+                        <DataGrid Grid.Row="1"
+                                  Margin="16,0,16,16"
+                                  ItemsSource="{Binding ProductosFiltrados}"
+                                  SelectedItem="{Binding ProductoSeleccionadoParaComanda, Mode=TwoWay}"
+                                  AutoGenerateColumns="False"
+                                  IsReadOnly="True"
+                                  GridLinesVisibility="All"
+                                  BorderBrush="#CBD5E1"
+                                  BorderThickness="1">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Nombre"
+                                                    Binding="{Binding Nombre}"
+                                                    Width="*" />
+                                <DataGridTextColumn Header="Precio"
+                                                    Binding="{Binding Precio}"
+                                                    Width="110" />
+                                <DataGridTextColumn Header="Tipo"
+                                                    Binding="{Binding Converter={StaticResource TipoConverter}}"
+                                                    Width="150" />
+                                <DataGridTextColumn Header="Impuesto"
+                                                    Binding="{Binding Converter={StaticResource ImpuestoConverter}}"
+                                                    Width="120" />
+                                <DataGridTextColumn Header="Tiempo preparación"
+                                                    Binding="{Binding Converter={StaticResource TiempoConverter}}"
+                                                    Width="170" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Cierre de Caja">
+                <Grid RowDefinitions="Auto,*" Margin="8" Background="#FFFFFF">
+                    <Border Grid.RowSpan="2" Background="#FFFFFF" BorderBrush="#D7DEE9" BorderThickness="1" CornerRadius="16" />
+
+                    <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="24" Margin="16,16,16,12">
+                        <TextBlock Text="Cierre de caja"
+                                   FontSize="24"
+                                   FontWeight="Bold"
+                                   Foreground="#1D4ED8" />
+                        <TextBlock Text="{Binding TotalCaja, StringFormat='Total vendido: {0:0.00} €'}"
+                                   VerticalAlignment="Center"
+                                   FontWeight="Bold"
+                                   Foreground="#15803D" />
+                        <TextBlock Text="{Binding CantidadVentas, StringFormat='Ventas procesadas: {0}'}"
+                                   VerticalAlignment="Center"
+                                   FontWeight="SemiBold"
+                                   Foreground="#A16207" />
+                    </StackPanel>
+
+                    <ListBox Grid.Row="1" Margin="16,0,16,16" ItemsSource="{Binding TicketsCaja}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border Padding="10" Margin="0,0,0,8" Background="#F8FAFC" BorderBrush="#CBD5E1" BorderThickness="1" CornerRadius="10">
+                                    <TextBlock Text="{Binding}" Foreground="#111827" />
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+        <Border Grid.Row="2" Margin="0,14,0,0" Padding="12" Background="#E0F2FE" BorderBrush="#7DD3FC" BorderThickness="1" CornerRadius="12">
+            <TextBlock Text="{Binding Mensaje}" Foreground="#075985" FontWeight="SemiBold" />
+        </Border>
+    </Grid>
+</Window>

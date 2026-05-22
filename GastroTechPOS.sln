@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestorTechPOS.Core", "GestorTechPOS.Core\GestorTechPOS.Core.csproj", "{0F148611-569D-4FEA-B907-5920B330DD96}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GastroTechPOS.Tests", "GastroTechPOS.Tests\GastroTechPOS.Tests.csproj", "{4612FA1D-B964-456B-99CE-A1C834324208}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GastroTechPOS.Infrastructure", "GastroTechPOS.Infrastructure\GastroTechPOS.Infrastructure.csproj", "{DA837568-E731-4717-965A-751BDD203293}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GastroTechPOS.UI", "GastroTechPOS.UI\GastroTechPOS.UI.csproj", "{5D5A3196-B44C-48C1-859F-27E746E9567E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0F148611-569D-4FEA-B907-5920B330DD96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F148611-569D-4FEA-B907-5920B330DD96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F148611-569D-4FEA-B907-5920B330DD96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F148611-569D-4FEA-B907-5920B330DD96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4612FA1D-B964-456B-99CE-A1C834324208}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4612FA1D-B964-456B-99CE-A1C834324208}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4612FA1D-B964-456B-99CE-A1C834324208}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4612FA1D-B964-456B-99CE-A1C834324208}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA837568-E731-4717-965A-751BDD203293}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA837568-E731-4717-965A-751BDD203293}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA837568-E731-4717-965A-751BDD203293}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA837568-E731-4717-965A-751BDD203293}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D5A3196-B44C-48C1-859F-27E746E9567E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D5A3196-B44C-48C1-859F-27E746E9567E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D5A3196-B44C-48C1-859F-27E746E9567E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D5A3196-B44C-48C1-859F-27E746E9567E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
